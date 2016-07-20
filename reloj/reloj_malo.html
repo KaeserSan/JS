@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="esES">
+<head>
+	<meta charset="UTF-8">
+	<title>TITLE</title>
+	<link rel="stylesheet" href="CSS">
+
+</head>
+<body>
+	<header></header>
+	
+	<div>
+		<input type="text" id="miReloj" value="">
+	</div>
+	<footer></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script>
+	var fecha = new Date;
+
+	var anyo = fecha.getYear() + 1900;
+	var mes = fecha.getMonth() +1;
+	var dia = fecha.getDate();
+	var hora = fecha.getHours();
+	var minuto = fecha.getMinutes();
+	var segundo = fecha.getSeconds();
+
+	var fechaHoraLarga = "";
+	var reloj = setInterval(function() {
+		segundo++;
+		if (segundo === 60){
+			segundo = 00;
+			minuto ++;
+			if (minuto === 60){
+				minuto = 0;
+				hora ++;
+				if (hora === 24){
+					hora = 0;
+					dia ++;
+				}
+			}
+		}
+		fechaHoraLarga = dia + "/" + mes + "/" + anyo + " " + hora + ":" + minuto + ":" + segundo;
+		$('#miReloj').val(fechaHoraLarga);	
+	// console.log(fechaHoraLarga);	
+	}, 1000);
+
+</script>
+</body>
+</html>
+
+
